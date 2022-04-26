@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:TYPMobileApp.Helpers"
+             xmlns:behaviors="clr-namespace:TYPMobileApp.Behaviors"
+             xmlns:converters="clr-namespace:TYPMobileApp.Converters"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             Visual="Material"
+             ios:Page.UseSafeArea="False"
+             xmlns:vm="clr-namespace:TYPMobileApp.ViewModels"
+             x:Class="TYPMobileApp.Views.LoginView">
+
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:TextToBoolConverter x:Key="dataConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid Padding="20"
+                  VerticalOptions="Center"
+                  Opacity="0.6">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0"
+                             VerticalOptions="Center">
+                    <Label Text="TYP Salon"
+                           FontFamily="CabinSketch"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           FontSize="60"
+                           HorizontalOptions="Center" />
+                    <Label Text="Login Form"
+                           FontFamily="CabinSketch"
+                           TextColor="#2196F3"
+                           FontAttributes="Bold"
+                           FontSize="40"
+                           HorizontalOptions="Center" />
+                </StackLayout>
+
+                <StackLayout Grid.Row="1"
+                             Spacing="10">
+
+                    <Frame CornerRadius="20">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{FontImage FontFamily=FontAwesome,
+                Glyph={x:Static helpers:IconFont.AccountCircle}, Size=30, Color=Black}"
+                                   Grid.Row="0"
+                                   HorizontalOptions="Start"
+                                   Aspect="AspectFit"
+                                   VerticalOptions="Center" />
+                            <Entry Placeholder="Email"
+                                   Text="{Binding Email}"
+                                   x:Name="EntryUsername"
+                                   BackgroundColor="Transparent"
+                                   HorizontalOptions="FillAndExpand">
+                                <Entry.Behaviors>
+                                    <behaviors:NotNullBehavior x:Name="UserNN" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                    </Frame>
+
+
+                    <Frame CornerRadius="20">
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{FontImage FontFamily=FontAwesome,
+                Glyph={x:Static helpers:IconFont.Lock}, Size=30,
+                                    Color=Black}"
+                                   Grid.Row="0"
+                                   HorizontalOptions="Start"
+                                   Aspect="AspectFit"
+                                   VerticalOptions="Center" />
+                            <Entry Placeholder="Password"
+                                   Text="{Binding Password}"
+                                   x:Name="EntryPassword"
+                                   BackgroundColor="Transparent"
+                                   IsPassword="True"
+                                   HorizontalOptions="FillAndExpand">
+                                <Entry.Behaviors>
+                                    <behaviors:NotNullBehavior x:Name="PasswordNN" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                    </Frame>
+
+
+                    <Button Text="Login"
+                            HorizontalOptions="Center"
+                            BackgroundColor="#2196F3"
+                            TextColor="White"
+                            WidthRequest="200"
+                            HeightRequest="60"
+                            CornerRadius="20"
+                            Command="{Binding LoginCommand}"
+                            IsEnabled="{Binding Disable}">
+                        <Button.Triggers>
+                            <MultiTrigger TargetType="Button">
+                                <MultiTrigger.Conditions>
+                                    <BindingCondition Binding="{Binding Source={x:Reference EntryUsername},
+                                Path=Text,
+                                Converter={StaticResource dataConverter}}"
+                                                      Value="True" />
+
+                                    <BindingCondition Binding="{Binding Source={x:Reference EntryPassword},
+                                Path=Text,
+                                Converter={StaticResource dataConverter}}"
+                                                      Value="True" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="IsEnabled"
+                                        Value="True" />
+                            </MultiTrigger>
+                        </Button.Triggers>
+                    </Button>
+
+
+                   <!-- <Label Text="New Users :"
+                           TextColor="White"
+                           FontAttributes="Bold" />-->
+
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox x:Name="CheckBoxAgree"
+                                  VerticalOptions="Center"
+                                  Color="White"
+                                  IsChecked="True" />
+                      <!--  <Label Text="I Agree"
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               FontAttributes="Bold" />-->
+                    </StackLayout>
+
+                    <Button Text="Register"
+                            HorizontalOptions="Center"
+                            BackgroundColor="Black"
+                            TextColor="White"
+                            WidthRequest="200"
+                            HeightRequest="60"
+                            CornerRadius="20"
+                            Command="{Binding SubmitCommand}">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding Source={x:Reference CheckBoxAgree},
+                        Path=IsChecked}"
+                                         Value="False">
+                                <Setter Property="IsEnabled"
+                                        Value="False" />
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+
+
+                </StackLayout>
+            </Grid>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TYPMobileApp.Views.AppointmentHistoryView"
+             xmlns:vm="clr-namespace:TYPMobileApp.ViewModels"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:helpers="clr-namespace:TYPMobileApp.Helpers"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightSecondaryBackgroundColor}, Dark={StaticResource DarkSecondaryBackgroundColor}}"
+             Visual="Material">
+
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem Text="Bookings"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="Booking_Clicked" />
+        <ToolbarItem Text="Shoping"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="Shoping_Clicked" />
+        <ToolbarItem Text="Profile"
+                     Order="Secondary"
+                     Priority="0"
+                     Clicked="Profile_Clicked" />
+        <ToolbarItem Text="Logout"
+                     Order="Secondary"
+                     Priority="0"
+                     Clicked="Logout_Clicked" />
+    </ContentPage.ToolbarItems>-->
+
+    <ContentPage.BindingContext>
+        <vm:AppointmentHistoryViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <ImageButton Source="{FontImage FontFamily=FontAwesome,
+                Glyph={x:Static helpers:IconFont.ArrowLeft},Size=30, Color=White}"
+                         Grid.Row="0"
+                         HorizontalOptions="Start"
+                         Aspect="AspectFit"
+                         VerticalOptions="Start"
+                         Margin="10,30"
+                         Clicked="ImageButton_Clicked" />
+
+            <Label Text="App History"
+                   FontSize="40"
+                   TextColor="WhiteSmoke"
+                   FontFamily="CabinSketch"
+                   HorizontalOptions="StartAndExpand"
+                   VerticalOptions="Start" />
+
+            <Label x:Name="LabelName"
+                   FontSize="Subtitle"
+                   Margin="20,0"
+                   TextColor="WhiteSmoke"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End" />
+
+            <pancake:PancakeView BackgroundColor="{AppThemeBinding Light={StaticResource LightInnerBackgroundColor}, Dark={StaticResource DarkInnerBackgroundColor}}"
+                                 CornerRadius="40,40,0,0"
+                                 Grid.Row="1">
+
+                <StackLayout>
+                    <ScrollView>
+                        <StackLayout>
+                            <Grid Padding="10">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label  Grid.Column="0"
+                                        Grid.Row="0"
+                                        Text="Service"
+                                        FontAttributes="Bold" />
+                                <Label  Grid.Column="1"
+                                        Grid.Row="0"
+                                        Text="Date"
+                                        FontAttributes="Bold" />
+                                <Label  Grid.Column="2"
+                                        Grid.Row="0"
+                                        Text="Time"
+                                        FontAttributes="Bold" />
+
+                                <Label  Grid.Column="3"
+                                        Grid.Row="0"
+                                        Text="Status"
+                                        FontAttributes="Bold" />
+                            </Grid>
+
+                            <CollectionView ItemsSource="{Binding Histories}"
+                                            SelectionMode="Single">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Padding="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <Label Grid.Column="0"
+                                                   Text="{Binding Service}"
+                                                   FontAttributes="Bold" />
+                                            <Label Grid.Column="1"
+                                                   Text="{Binding Date.DayOfWeek}"
+                                                   FontAttributes="Bold" />
+                                            <Label Grid.Column="2"
+                                                   Text="{Binding Time.TimeOfDay}"
+                                                   FontAttributes="Bold" />
+                                            <Label Grid.Column="3"
+                                                   Text="{Binding Status}"
+                                                   FontAttributes="Bold" />
+
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </pancake:PancakeView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage> 

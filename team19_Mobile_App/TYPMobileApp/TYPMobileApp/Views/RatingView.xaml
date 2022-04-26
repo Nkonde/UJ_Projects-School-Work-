@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xct:Popup xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             mc:Ignorable="d"
+             Size="300, 300"
+             x:Class="TYPMobileApp.Views.RatingView">
+    
+    <StackLayout>
+    <StackLayout VerticalOptions="CenterAndExpand">
+      <Label  HorizontalTextAlignment="Center"
+                TextColor="#fdcc0d"
+                HorizontalOptions="Center">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span x:Name="MyStar1"
+                          FontSize="34"
+                          FontFamily="MyIcon">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+                        </Span.GestureRecognizers>
+                    </Span>
+                    <Span x:Name="MyStar2"
+                          FontSize="34"
+                          FontFamily="MyIcon">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2" />
+                        </Span.GestureRecognizers>
+                    </Span>
+                    <Span x:Name="MyStar3"
+                          FontSize="34"
+                          FontFamily="MyIcon">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_3" />
+                        </Span.GestureRecognizers>
+                    </Span>
+                    <Span x:Name="MyStar4"
+                          FontSize="34"
+                          FontFamily="MyIcon">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_4" />
+                        </Span.GestureRecognizers>
+                    </Span>
+                    <Span x:Name="MyStar5"
+                          FontSize="34"
+                          FontFamily="MyIcon">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_5" />
+                        </Span.GestureRecognizers>
+                    </Span>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+            <Editor x:Name="feeback"
+                    Text=""
+                    Placeholder="Enter feedback"
+                    VerticalOptions="Center"
+                    Keyboard="Chat"
+                    HeightRequest="100"
+                    BackgroundColor="LightGray" />
+            <Button Text="Submit"
+                    FontSize="Medium"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center"
+                    TextColor="White"
+                    BackgroundColor="black"
+                    Clicked="Button_Clicked"
+                    BorderWidth="1.5"
+                    CornerRadius="12" />
+        </StackLayout>
+        <!--<StackLayout Grid.Row="1"
+                     Spacing="10">
+
+            
+    </StackLayout>-->
+    </StackLayout>
+</xct:Popup>

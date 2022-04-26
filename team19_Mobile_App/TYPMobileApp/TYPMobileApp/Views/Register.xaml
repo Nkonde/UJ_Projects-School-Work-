@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TYPMobileApp.Views.Register"
+             Visual="Material"
+             xmlns:vm="clr-namespace:TYPMobileApp.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Padding="20"
+                  VerticalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0"
+                             VerticalOptions="Center">
+                    <Label Text="Registration Page"
+                           FontFamily="CabinSketch"
+                           TextColor="#2196F3"
+                           FontSize="35"
+                           HorizontalOptions="Center" />
+                </StackLayout>
+                <StackLayout Grid.Row="1"
+                             Spacing="10">
+
+                    <Entry x:Name="Name"
+                           Text="{Binding Name}"
+                           Placeholder="Enter Name"
+                           VerticalOptions="Center"
+                           Keyboard="Text"
+                           TextColor="Black" />
+
+                    <Entry x:Name="Surname"
+                           Text="{Binding Surname}"
+                           Placeholder="Enter Surname"
+                           VerticalOptions="Center"
+                           Keyboard="Text"
+                           TextColor="Black" />
+
+                    <Entry x:Name="Email"
+                           Text="{Binding Email}"
+                           Placeholder="Enter Email"
+                           VerticalOptions="Center"
+                           Keyboard="Text"
+                           TextColor="Black" />
+
+                    <Entry x:Name="Password"
+                           Text="{Binding Password}"
+                           Placeholder="Enter Password"
+                           VerticalOptions="Center"
+                           Keyboard="Text"
+                           TextColor="Black" />
+
+                    <Entry x:Name="Phonenumber"
+                           Text="{Binding Phonenumber}"
+                           Placeholder="Enter Phonenumber"
+                           VerticalOptions="Center"
+                           TextColor="Black"
+                           Keyboard="Numeric" />
+
+                    <Entry x:Name="Address"
+                           Text="{Binding Address}"
+                           Placeholder="Enter Address"
+                           VerticalOptions="Center"
+                           Keyboard="Text"
+                           TextColor="Black" />
+
+                    <Button Text="Register"
+                            FontSize="Medium"
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Center"
+                            TextColor="White"
+                            BackgroundColor="black"
+                            Command="{Binding RegisterCommand}"
+                            BorderWidth="1.5"
+                            CornerRadius="12" />
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

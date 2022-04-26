@@ -1,0 +1,806 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1FDE2D8F-3E5F-468F-87F0-12970A9AD67D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TYPWebApplication</RootNamespace>
+    <AssemblyName>TYPWebApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44332</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.10.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>packages\Portable.BouncyCastle.1.8.10\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=2.15.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>packages\MailKit.2.15.0\lib\net47\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\lib\net452\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\lib\net452\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\lib\net452\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.15.0.44798, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ApplicationInsights.Web.2.15.0\lib\net452\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\lib\net452\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.15.0.44797, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ApplicationInsights.2.15.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.TelemetryCorrelation.1.0.8\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MimeKit, Version=2.15.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>packages\MimeKit.2.15.0\lib\net47\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.4.6.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="addemployee.aspx" />
+    <Content Include="addstyle.aspx" />
+    <Content Include="AddToCart.aspx" />
+    <Content Include="adminDashboard.aspx" />
+    <Content Include="appointment-page.aspx" />
+    <Content Include="AppointmentList.aspx" />
+    <Content Include="Appointments.aspx" />
+    <Content Include="appointmentsreports.aspx" />
+    <Content Include="assets\fonts\fa-solid-900.svg" />
+    <Content Include="assets\fonts\Pe-icon-7-stroke.svg" />
+    <Content Include="assets\images\avatars\1.jpg" />
+    <Content Include="assets\images\avatars\10.jpg" />
+    <Content Include="assets\images\avatars\11.jpg" />
+    <Content Include="assets\images\avatars\12.jpg" />
+    <Content Include="assets\images\avatars\2.jpg" />
+    <Content Include="assets\images\avatars\3.jpg" />
+    <Content Include="assets\images\avatars\4.jpg" />
+    <Content Include="assets\images\avatars\5.jpg" />
+    <Content Include="assets\images\avatars\8.jpg" />
+    <Content Include="assets\images\avatars\9.jpg" />
+    <Content Include="assets\images\logo-inverse.png" />
+    <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\salon.jpg" />
+    <Content Include="assets\scripts\main.js" />
+    <Content Include="assignStyleto.aspx" />
+    <Content Include="busyReport.aspx" />
+    <Content Include="cart.aspx" />
+    <Content Include="Checkout.aspx" />
+    <Content Include="completed-appointments.aspx" />
+    <Content Include="confirmnewstock.aspx" />
+    <Content Include="css\azia.css" />
+    <Content Include="css\azia.min.css" />
+    <Content Include="css\style-responsive.css" />
+    <Content Include="css\style.css" />
+    <Content Include="css\table-responsive.css" />
+    <Content Include="css\to-do.css" />
+    <Content Include="css\zabuto_calendar.css" />
+    <Content Include="Customize.aspx" />
+    <Content Include="dailyactivities.aspx" />
+    <Content Include="dashboard.aspx" />
+    <Content Include="DeleteItem.aspx" />
+    <Content Include="DeleteStock.aspx" />
+    <Content Include="Deletestyle.aspx" />
+    <Content Include="EmployeeReport.aspx" />
+    <Content Include="employees.aspx" />
+    <Content Include="filescheck.aspx" />
+    <Content Include="HistoryAppointment.aspx" />
+    <Content Include="images\background.jpg" />
+    <Content Include="images\Cute Short Haircut.jpg" />
+    <Content Include="images\icon.png" />
+    <Content Include="images\logo-inverse.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\nail1.jpg" />
+    <Content Include="images\nail2.jpg" />
+    <Content Include="images\nail5.jpg" />
+    <Content Include="images\nail6.jpg" />
+    <Content Include="images\nail7.jpg" />
+    <Content Include="images\palette.jpg" />
+    <Content Include="images\palette1.jpg" />
+    <Content Include="images\Polish1.jpg" />
+    <Content Include="images\Polish2.jpg" />
+    <Content Include="images\Polish3.jpg" />
+    <Content Include="images\Polish4.jpg" />
+    <Content Include="images\Polish5.jpg" />
+    <Content Include="images\profile.png" />
+    <Content Include="images\salon.jpg" />
+    <Content Include="images\style10.png" />
+    <Content Include="images\style11.jpg" />
+    <Content Include="images\style12.jpeg" />
+    <Content Include="images\style13.jpg" />
+    <Content Include="images\style2.jpg" />
+    <Content Include="images\style5.jpg" />
+    <Content Include="images\style6.jpg" />
+    <Content Include="images\style7.jpg" />
+    <Content Include="images\style8.jpg" />
+    <Content Include="images\style9.jpg" />
+    <Content Include="images\TWA.jpg" />
+    <Content Include="images\well.jpg" />
+    <Content Include="js\app-calendar-events.js" />
+    <Content Include="js\app-calendar.js" />
+    <Content Include="js\azia.js" />
+    <Content Include="js\chart.chartjs.js" />
+    <Content Include="js\chart.flot.js" />
+    <Content Include="js\chart.flot.sampledata.js" />
+    <Content Include="js\chart.morris.js" />
+    <Content Include="js\chart.peity.js" />
+    <Content Include="js\chart.sparkline.js" />
+    <Content Include="js\cookie.js" />
+    <Content Include="js\dashboard.sampledata.js" />
+    <Content Include="js\jquery.vmap.sampledata.js" />
+    <Content Include="js\map.apple.js" />
+    <Content Include="js\map.bluewater.js" />
+    <Content Include="js\map.mapbox.js" />
+    <Content Include="js\map.shiftworker.js" />
+    <Content Include="lib\advanced-datatable\css\demo_page.css" />
+    <Content Include="lib\advanced-datatable\css\demo_table.css" />
+    <Content Include="lib\advanced-datatable\css\demo_table_jui.css" />
+    <Content Include="lib\advanced-datatable\css\DT_bootstrap.css" />
+    <Content Include="lib\advanced-datatable\css\jquery.dataTables.css" />
+    <Content Include="lib\advanced-datatable\css\jquery.dataTables_themeroller.css" />
+    <Content Include="lib\advanced-datatable\images\back_disabled.png" />
+    <Content Include="lib\advanced-datatable\images\back_enabled.png" />
+    <Content Include="lib\advanced-datatable\images\back_enabled_hover.png" />
+    <Content Include="lib\advanced-datatable\images\details_close.png" />
+    <Content Include="lib\advanced-datatable\images\details_open.png" />
+    <Content Include="lib\advanced-datatable\images\favicon.ico" />
+    <Content Include="lib\advanced-datatable\images\forward_disabled.png" />
+    <Content Include="lib\advanced-datatable\images\forward_enabled.png" />
+    <Content Include="lib\advanced-datatable\images\forward_enabled_hover.png" />
+    <Content Include="lib\advanced-datatable\images\sort_asc.png" />
+    <Content Include="lib\advanced-datatable\images\sort_asc_disabled.png" />
+    <Content Include="lib\advanced-datatable\images\sort_both.png" />
+    <Content Include="lib\advanced-datatable\images\sort_desc.png" />
+    <Content Include="lib\advanced-datatable\images\sort_desc_disabled.png" />
+    <Content Include="lib\advanced-datatable\js\DT_bootstrap.js" />
+    <Content Include="lib\advanced-datatable\js\jquery.dataTables.js" />
+    <Content Include="lib\advanced-datatable\js\jquery.dataTables.min.js" />
+    <Content Include="lib\advanced-datatable\js\jquery.js" />
+    <Content Include="lib\advanced-form-components.js" />
+    <Content Include="lib\bootstrap-datepicker\css\datepicker.css" />
+    <Content Include="lib\bootstrap-datepicker\js\bootstrap-datepicker.js" />
+    <Content Include="lib\bootstrap-daterangepicker\date.js" />
+    <Content Include="lib\bootstrap-daterangepicker\daterangepicker-bs3.css" />
+    <Content Include="lib\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="lib\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="lib\bootstrap-daterangepicker\moment.min.js" />
+    <Content Include="lib\bootstrap-datetimepicker\css\datetimepicker.css" />
+    <Content Include="lib\bootstrap-datetimepicker\js\bootstrap-datetimepicker.js" />
+    <Content Include="lib\bootstrap-fileupload\bootstrap-fileupload.css" />
+    <Content Include="lib\bootstrap-fileupload\bootstrap-fileupload.js" />
+    <Content Include="lib\bootstrap-inputmask\bootstrap-inputmask.min.js" />
+    <Content Include="lib\bootstrap-switch.js" />
+    <Content Include="lib\bootstrap-timepicker\compiled\timepicker.css" />
+    <Content Include="lib\bootstrap-timepicker\js\bootstrap-timepicker.js" />
+    <Content Include="lib\bootstrap-wysihtml5\bootstrap-wysihtml5.css" />
+    <Content Include="lib\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
+    <Content Include="lib\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
+    <Content Include="lib\bootstrap\css\bootstrap.css" />
+    <Content Include="lib\bootstrap\css\bootstrap.min.css" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="lib\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.js" />
+    <Content Include="lib\bootstrap\js\bootstrap.min.js" />
+    <Content Include="lib\calendar-conf-events.js" />
+    <Content Include="lib\chart-master\Chart.js" />
+    <Content Include="lib\chart.js\Chart.bundle.min.js" />
+    <Content Include="lib\chart.js\Chart.min.js" />
+    <Content Include="lib\chartjs-conf.js" />
+    <Content Include="lib\ckeditor\ckeditor.js" />
+    <Content Include="lib\common-scripts.js" />
+    <Content Include="lib\dropzone\css\dropzone.css" />
+    <Content Include="lib\dropzone\dropzone.js" />
+    <Content Include="lib\dropzone\images\spritemap%402x.png" />
+    <Content Include="lib\dropzone\images\spritemap.png" />
+    <Content Include="lib\easy-pie-chart.js" />
+    <Content Include="lib\fancybox\jquery.fancybox.css" />
+    <Content Include="lib\fancybox\jquery.fancybox.js" />
+    <Content Include="lib\file-uploader\css\jquery.fileupload-noscript.css" />
+    <Content Include="lib\file-uploader\css\jquery.fileupload-ui-noscript.css" />
+    <Content Include="lib\file-uploader\css\jquery.fileupload-ui.css" />
+    <Content Include="lib\file-uploader\css\jquery.fileupload.css" />
+    <Content Include="lib\file-uploader\img\loading.gif" />
+    <Content Include="lib\file-uploader\img\progressbar.gif" />
+    <Content Include="lib\file-uploader\js\cors\jquery.xdr-transport.js" />
+    <Content Include="lib\file-uploader\js\jquery.fileupload-audio.js" />
+    <Content Include="lib\file-uploader\js\jquery.fileupload-image.js" />
+    <Content Include="lib\file-uploader\js\jquery.fileupload-process.js" />
+    <Content Include="lib\file-uploader\js\jquery.fileupload-ui.js" />
+    <Content Include="lib\file-uploader\js\jquery.fileupload-validate.js" />
+    <Content Include="lib\file-uploader\js\jquery.fileupload-video.js" />
+    <Content Include="lib\file-uploader\js\jquery.fileupload.js" />
+    <Content Include="lib\file-uploader\js\jquery.iframe-transport.js" />
+    <Content Include="lib\file-uploader\js\main.js" />
+    <Content Include="lib\file-uploader\js\vendor\jquery.ui.widget.js" />
+    <Content Include="lib\flotchart-conf.js" />
+    <Content Include="lib\flot\jquery.flot.crosshair.js" />
+    <Content Include="lib\flot\jquery.flot.js" />
+    <Content Include="lib\flot\jquery.flot.pie.js" />
+    <Content Include="lib\flot\jquery.flot.resize.js" />
+    <Content Include="lib\flot\jquery.flot.stack.js" />
+    <Content Include="lib\font-awesome\css\font-awesome.css" />
+    <Content Include="lib\font-awesome\css\font-awesome.min.css" />
+    <Content Include="lib\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="lib\form-component.js" />
+    <Content Include="lib\form-validation-script.js" />
+    <Content Include="lib\fullcalendar\bootstrap-fullcalendar.css" />
+    <Content Include="lib\fullcalendar\fullcalendar.min.js" />
+    <Content Include="lib\google-maps\data\points.js" />
+    <Content Include="lib\google-maps\maplace.js" />
+    <Content Include="lib\gritter-conf.js" />
+    <Content Include="lib\gritter\css\jquery.gritter.css" />
+    <Content Include="lib\gritter\css\jquery.gritter0.css" />
+    <Content Include="lib\gritter\images\gritter-light.png" />
+    <Content Include="lib\gritter\images\gritter-long.png" />
+    <Content Include="lib\gritter\images\gritter.png" />
+    <Content Include="lib\gritter\images\ie-spacer.gif" />
+    <Content Include="lib\gritter\js\jquery.gritter.js" />
+    <Content Include="lib\jquery-easy-pie-chart\jquery.easy-pie-chart.css" />
+    <Content Include="lib\jquery-easy-pie-chart\jquery.easy-pie-chart.js" />
+    <Content Include="lib\jquery-ui-1.9.2.custom.min.js" />
+    <Content Include="lib\jquery.backstretch.min.js" />
+    <Content Include="lib\jquery.dcjqaccordion.2.7.js" />
+    <Content Include="lib\jquery.flot\excanvas.min.js" />
+    <Content Include="lib\jquery.flot\jquery.colorhelpers.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.canvas.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.categories.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.crosshair.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.errorbars.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.fillbetween.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.image.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.navigate.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.pie.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.resize.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.selection.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.stack.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.symbol.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.threshold.js" />
+    <Content Include="lib\jquery.flot\jquery.flot.time.js" />
+    <Content Include="lib\jquery.flot\jquery.js" />
+    <Content Include="lib\jquery.flot\LICENSE.txt" />
+    <Content Include="lib\jquery.nicescroll.js" />
+    <Content Include="lib\jquery.scrollTo.min.js" />
+    <Content Include="lib\jquery.sparkline.js" />
+    <Content Include="lib\jquery.tagsinput.js" />
+    <Content Include="lib\jquery.ui.touch-punch.min.js" />
+    <Content Include="lib\jquery\jquery.js" />
+    <Content Include="lib\jquery\jquery.min.js" />
+    <Content Include="lib\morris-conf.js" />
+    <Content Include="lib\morris\morris.min.js" />
+    <Content Include="lib\peity\jquery.peity.min.js" />
+    <Content Include="lib\php-mail-form\validate.js" />
+    <Content Include="lib\raphael\raphael.min.js" />
+    <Content Include="lib\sparkline-chart.js" />
+    <Content Include="lib\tasks.js" />
+    <Content Include="lib\xchart\d3.v3.min.js" />
+    <Content Include="lib\xchart\xcharts.css" />
+    <Content Include="lib\xchart\xcharts.min.js" />
+    <Content Include="lib\zabuto_calendar.js" />
+    <Content Include="main.css" />
+    <Content Include="PickStylist.aspx" />
+    <Content Include="PlaceOrder.aspx" />
+    <Content Include="Quality.aspx" />
+    <Content Include="RateStylist.aspx" />
+    <Content Include="RegisterUser.aspx" />
+    <Content Include="RemoveCart.aspx" />
+    <Content Include="salesreport.aspx" />
+    <Content Include="Stockedit.aspx" />
+    <Content Include="stockhistory.aspx" />
+    <Content Include="Stockmanagement.aspx" />
+    <Content Include="Stockreport.aspx" />
+    <Content Include="Styleedit.aspx" />
+    <Content Include="Stylereports.aspx" />
+    <Content Include="Stylesmanager.aspx" />
+    <Content Include="supplier.aspx" />
+    <Content Include="supplierconfirm.aspx" />
+    <Content Include="TimeSlot.aspx" />
+    <Content Include="UpdateAppointment.aspx" />
+    <Content Include="UserLogin.aspx" />
+    <Content Include="UserProfile.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="addemployee.aspx.cs">
+      <DependentUpon>addemployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addemployee.aspx.designer.cs">
+      <DependentUpon>addemployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="addstyle.aspx.cs">
+      <DependentUpon>addstyle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="addstyle.aspx.designer.cs">
+      <DependentUpon>addstyle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddToCart.aspx.cs">
+      <DependentUpon>AddToCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddToCart.aspx.designer.cs">
+      <DependentUpon>AddToCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminDashboard.aspx.cs">
+      <DependentUpon>adminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminDashboard.aspx.designer.cs">
+      <DependentUpon>adminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="appointment-page.aspx.cs">
+      <DependentUpon>appointment-page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="appointment-page.aspx.designer.cs">
+      <DependentUpon>appointment-page.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentList.aspx.cs">
+      <DependentUpon>AppointmentList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppointmentList.aspx.designer.cs">
+      <DependentUpon>AppointmentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Appointments.aspx.cs">
+      <DependentUpon>Appointments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Appointments.aspx.designer.cs">
+      <DependentUpon>Appointments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="appointmentsreports.aspx.cs">
+      <DependentUpon>appointmentsreports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="appointmentsreports.aspx.designer.cs">
+      <DependentUpon>appointmentsreports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="assignStyleto.aspx.cs">
+      <DependentUpon>assignStyleto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="assignStyleto.aspx.designer.cs">
+      <DependentUpon>assignStyleto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="busyReport.aspx.cs">
+      <DependentUpon>busyReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="busyReport.aspx.designer.cs">
+      <DependentUpon>busyReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout.aspx.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout.aspx.designer.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="completed-appointments.aspx.cs">
+      <DependentUpon>completed-appointments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="completed-appointments.aspx.designer.cs">
+      <DependentUpon>completed-appointments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="confirmnewstock.aspx.cs">
+      <DependentUpon>confirmnewstock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="confirmnewstock.aspx.designer.cs">
+      <DependentUpon>confirmnewstock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customize.aspx.cs">
+      <DependentUpon>Customize.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customize.aspx.designer.cs">
+      <DependentUpon>Customize.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dailyactivities.aspx.cs">
+      <DependentUpon>dailyactivities.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dailyactivities.aspx.designer.cs">
+      <DependentUpon>dailyactivities.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteItem.aspx.cs">
+      <DependentUpon>DeleteItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeleteItem.aspx.designer.cs">
+      <DependentUpon>DeleteItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteStock.aspx.cs">
+      <DependentUpon>DeleteStock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeleteStock.aspx.designer.cs">
+      <DependentUpon>DeleteStock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Deletestyle.aspx.cs">
+      <DependentUpon>Deletestyle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Deletestyle.aspx.designer.cs">
+      <DependentUpon>Deletestyle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeReport.aspx.cs">
+      <DependentUpon>EmployeeReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EmployeeReport.aspx.designer.cs">
+      <DependentUpon>EmployeeReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="employees.aspx.cs">
+      <DependentUpon>employees.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="employees.aspx.designer.cs">
+      <DependentUpon>employees.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="filescheck.aspx.cs">
+      <DependentUpon>filescheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="filescheck.aspx.designer.cs">
+      <DependentUpon>filescheck.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HistoryAppointment.aspx.cs">
+      <DependentUpon>HistoryAppointment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HistoryAppointment.aspx.designer.cs">
+      <DependentUpon>HistoryAppointment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Assignn.cs" />
+    <Compile Include="Models\Bookings.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CC.cs" />
+    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\Migos.cs" />
+    <Compile Include="Models\Packs.cs" />
+    <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\SalonItems.cs" />
+    <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\StockOrder.cs" />
+    <Compile Include="Models\Style.cs" />
+    <Compile Include="Models\Stylist.cs" />
+    <Compile Include="Models\TimeSlot.cs" />
+    <Compile Include="Models\Users.cs" />
+    <Compile Include="PickStylist.aspx.cs">
+      <DependentUpon>PickStylist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PickStylist.aspx.designer.cs">
+      <DependentUpon>PickStylist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlaceOrder.aspx.cs">
+      <DependentUpon>PlaceOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlaceOrder.aspx.designer.cs">
+      <DependentUpon>PlaceOrder.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quality.aspx.cs">
+      <DependentUpon>Quality.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Quality.aspx.designer.cs">
+      <DependentUpon>Quality.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RateStylist.aspx.cs">
+      <DependentUpon>RateStylist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RateStylist.aspx.designer.cs">
+      <DependentUpon>RateStylist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterUser.aspx.cs">
+      <DependentUpon>RegisterUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterUser.aspx.designer.cs">
+      <DependentUpon>RegisterUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RemoveCart.aspx.cs">
+      <DependentUpon>RemoveCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RemoveCart.aspx.designer.cs">
+      <DependentUpon>RemoveCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="salesreport.aspx.cs">
+      <DependentUpon>salesreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="salesreport.aspx.designer.cs">
+      <DependentUpon>salesreport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Stockedit.aspx.cs">
+      <DependentUpon>Stockedit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stockedit.aspx.designer.cs">
+      <DependentUpon>Stockedit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="stockhistory.aspx.cs">
+      <DependentUpon>stockhistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="stockhistory.aspx.designer.cs">
+      <DependentUpon>stockhistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stockmanagement.aspx.cs">
+      <DependentUpon>Stockmanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stockmanagement.aspx.designer.cs">
+      <DependentUpon>Stockmanagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stockreport.aspx.cs">
+      <DependentUpon>Stockreport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stockreport.aspx.designer.cs">
+      <DependentUpon>Stockreport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Styleedit.aspx.cs">
+      <DependentUpon>Styleedit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Styleedit.aspx.designer.cs">
+      <DependentUpon>Styleedit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stylereports.aspx.cs">
+      <DependentUpon>Stylereports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stylereports.aspx.designer.cs">
+      <DependentUpon>Stylereports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Stylesmanager.aspx.cs">
+      <DependentUpon>Stylesmanager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Stylesmanager.aspx.designer.cs">
+      <DependentUpon>Stylesmanager.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="supplier.aspx.cs">
+      <DependentUpon>supplier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="supplier.aspx.designer.cs">
+      <DependentUpon>supplier.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="supplierconfirm.aspx.cs">
+      <DependentUpon>supplierconfirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="supplierconfirm.aspx.designer.cs">
+      <DependentUpon>supplierconfirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TimeSlot.aspx.cs">
+      <DependentUpon>TimeSlot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TimeSlot.aspx.designer.cs">
+      <DependentUpon>TimeSlot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateAppointment.aspx.cs">
+      <DependentUpon>UpdateAppointment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateAppointment.aspx.designer.cs">
+      <DependentUpon>UpdateAppointment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserLogin.aspx.cs">
+      <DependentUpon>UserLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserLogin.aspx.designer.cs">
+      <DependentUpon>UserLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\fonts\fa-solid-900.eot" />
+    <Content Include="assets\fonts\fa-solid-900.ttf" />
+    <Content Include="assets\fonts\fa-solid-900.woff" />
+    <Content Include="assets\fonts\fa-solid-900.woff2" />
+    <Content Include="assets\fonts\Pe-icon-7-stroke.eot" />
+    <Content Include="assets\fonts\Pe-icon-7-stroke.ttf" />
+    <Content Include="assets\fonts\Pe-icon-7-stroke.woff" />
+    <Content Include="ApplicationInsights.config" />
+    <Content Include="lib\advanced-datatable\images\Sorting icons.psd" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="lib\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="lib\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="lib\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="lib\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="lib\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="lib\peity\LICENCE" />
+    <Content Include="lib\jquery.flot\component.json" />
+    <Content Include="lib\jquery.flot\flot.jquery.json" />
+    <Content Include="lib\jquery.flot\Makefile" />
+    <None Include="packages.config" />
+    <Content Include="Site.Master" />
+    <None Include="Properties\PublishProfiles\TYPWebApplication - Web Deploy.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64131</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44332/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
+    <Error Condition="!Exists('packages\Microsoft.ApplicationInsights.Web.2.15.0\build\Microsoft.ApplicationInsights.Web.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.ApplicationInsights.Web.2.15.0\build\Microsoft.ApplicationInsights.Web.targets'))" />
+  </Target>
+  <Import Project="packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.DependencyCollector.2.15.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
+  <Import Project="packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.15.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
+  <Import Project="packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Import Project="packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.WindowsServer.2.15.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
+  <Import Project="packages\Microsoft.ApplicationInsights.Web.2.15.0\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('packages\Microsoft.ApplicationInsights.Web.2.15.0\build\Microsoft.ApplicationInsights.Web.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TYPWebApi", "TYPWebApi\TYPWebApi.csproj", "{DBA34EC0-7E80-46D7-83FA-D237BC9E27A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBA34EC0-7E80-46D7-83FA-D237BC9E27A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBA34EC0-7E80-46D7-83FA-D237BC9E27A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBA34EC0-7E80-46D7-83FA-D237BC9E27A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBA34EC0-7E80-46D7-83FA-D237BC9E27A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5573E370-06AE-4AEF-9BB1-1D838634CF89}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TYPMobileApp.Views.BookingDetailsView"
+             xmlns:helpers="clr-namespace:TYPMobileApp.Helpers"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             Visual="Material"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightPageBackgroundColor}, Dark={StaticResource DarkPageBackgroundColor}}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Bookings"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="Booking_Clicked" />
+        <ToolbarItem Text="Rating"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="Customize_Clicked" />
+        <ToolbarItem Text="Shoping"
+                     Order="Primary"
+                     Priority="0"
+                     Clicked="Shoping_Clicked" />
+        <ToolbarItem Text="Profile"
+                     Order="Secondary"
+                     Priority="0"
+                     Clicked="Profile_Clicked" />
+        <ToolbarItem Text="Logout"
+                     Order="Secondary"
+                     Priority="0"
+                     Clicked="Logout_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+      
+        
+                <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="200" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+         <!--   <Image Grid.Row="0"
+                   Source="{Binding SelectedStyle.Image}"
+                   Aspect="AspectFit"
+                   VerticalOptions="Start" />-->
+
+            <ImageButton Source="{FontImage FontFamily=FontAwesome,
+                Glyph={x:Static helpers:IconFont.ArrowLeft}, Size=30, Color=White}"
+                         Grid.Row="0"
+                         HorizontalOptions="Start"
+                         Aspect="AspectFit"
+                         VerticalOptions="Start"
+                         Margin="10,30"
+                         Clicked="ImageButtom_CLicked" />
+
+            <StackLayout Grid.Row="2"
+                         Spacing="10"
+                         Padding="10"
+                         VerticalOptions="Start">
+                <StackLayout Orientation="Horizontal"
+                             Spacing="10">
+                    <Label Text="Name: "
+                           FontSize="Subtitle"
+                           TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+                    <Label Text="{Binding SelectedStyle.Name}"
+                           FontSize="Subtitle"
+                           TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal"
+                             Spacing="10">
+                    <Label Text="Price: "
+                           FontSize="Subtitle"
+                           TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+                    <Label Text="{Binding SelectedStyle.Price}"
+                           FontSize="Subtitle"
+                           TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}" />
+                </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                                 Spacing="10">
+                        <Label Text="Assigned Nailist: "
+                               FontSize="Subtitle"
+                               TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+                        <Label Text="{Binding SelectedStyle.Stylist}"
+                               FontSize="Subtitle"
+                               TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal"
+                             Spacing="10">
+
+                    <DatePicker  x:Name="TheDatePicker"
+                                 FontSize="Subtitle"
+                                 HorizontalOptions="FillAndExpand"
+                                TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+
+                    <!--<Picker x:Name="PickerCustomer"
+                            Title="Select Time"
+                            FontSize="Subtitle"
+                            HorizontalOptions="StartAndExpand"
+                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />-->
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal"
+                             Spacing="10">
+
+                    <Picker x:Name="PickerCustomer"
+                            Title="Select Time"
+                            FontSize="Subtitle"
+                            HorizontalOptions="FillAndExpand"
+                            TextColor="{AppThemeBinding Light={StaticResource LightPrimaryTextColor}, Dark={StaticResource DarkPrimaryTextColor}}" />
+                </StackLayout>
+
+
+
+                </StackLayout>
+
+                <Button Text="Book"
+                        HorizontalOptions="CenterAndExpand"
+                        Clicked="Button_Clicked"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LightInfoButtonColor}, Dark={StaticResource DarkInfoButtonColor}}"
+                        HeightRequest="60"
+                        Grid.Row="6" />
+            </Grid>
+       
+       
+    </ContentPage.Content>
+</ContentPage>
+    
