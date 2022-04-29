@@ -1,6 +1,6 @@
-#217052105_miniproject
+# Project 1
 
-## KASI SMART CONTRACT
+## KASI SMART CONTRACT (217052105_miniproject)
 
 #### Problem Statement 
 
