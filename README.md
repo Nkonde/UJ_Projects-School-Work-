@@ -20,6 +20,7 @@ It must be a decentralized application that is facilitated by the peer-to-peer n
  Example to consider includes smart contract,voting system, Healthcare system for storing patient records. etc 
 NB:Do not implement any Wallets or Cryptocurrencies.
 
+# Project 2
 # Informatics 3 Team19 Group Project(frondend,backend API and Android Application)
 
 #### Project Requirement / Objective
